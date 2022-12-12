@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F849A58E294435CD0024591D /* CarouselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F849A58D294435CD0024591D /* CarouselApp.swift */; };
-		F849A590294435CD0024591D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F849A58F294435CD0024591D /* ContentView.swift */; };
+		F849A590294435CD0024591D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F849A58F294435CD0024591D /* MainView.swift */; };
 		F849A592294435D00024591D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F849A591294435D00024591D /* Assets.xcassets */; };
 		F849A595294435D00024591D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F849A594294435D00024591D /* Preview Assets.xcassets */; };
+		F849A59E294436740024591D /* CarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F849A59D294436740024591D /* CarouselModel.swift */; };
+		F849A5BC29446FB60024591D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F849A5BB29446FB60024591D /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F849A58A294435CD0024591D /* Carousel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carousel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F849A58D294435CD0024591D /* CarouselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselApp.swift; sourceTree = "<group>"; };
-		F849A58F294435CD0024591D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F849A58F294435CD0024591D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F849A591294435D00024591D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F849A594294435D00024591D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F849A59D294436740024591D /* CarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselModel.swift; sourceTree = "<group>"; };
+		F849A5BB29446FB60024591D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,10 @@
 		F849A58C294435CD0024591D /* Carousel */ = {
 			isa = PBXGroup;
 			children = (
+				F849A59B2944363F0024591D /* Model */,
 				F849A58D294435CD0024591D /* CarouselApp.swift */,
-				F849A58F294435CD0024591D /* ContentView.swift */,
+				F849A58F294435CD0024591D /* MainView.swift */,
+				F849A5BB29446FB60024591D /* SwiftUIView.swift */,
 				F849A591294435D00024591D /* Assets.xcassets */,
 				F849A593294435D00024591D /* Preview Content */,
 			);
@@ -65,6 +71,14 @@
 				F849A594294435D00024591D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F849A59B2944363F0024591D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F849A59D294436740024591D /* CarouselModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F849A590294435CD0024591D /* ContentView.swift in Sources */,
+				F849A590294435CD0024591D /* MainView.swift in Sources */,
 				F849A58E294435CD0024591D /* CarouselApp.swift in Sources */,
+				F849A5BC29446FB60024591D /* SwiftUIView.swift in Sources */,
+				F849A59E294436740024591D /* CarouselModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
