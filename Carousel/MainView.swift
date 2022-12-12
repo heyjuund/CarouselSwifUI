@@ -1,4 +1,5 @@
 //
+
 //  ContentView.swift
 //  Carousel
 //
@@ -8,10 +9,11 @@
 import SwiftUI
 
 struct MainView: View {
+    
     // MARK: - PROPERTIES
-    //    private var card : CardView
-    @State var card = cardViews
-    @State private var isShowing: Bool = false
+    @State var cardView = cardViews
+    @State var currentIndex: Int = 0
+    @State private var isShowing: Bool = true
     
     // MARK: - BODIES
     var body: some View {
@@ -19,96 +21,9 @@ struct MainView: View {
             titleView
             
             if isShowing {
-                VStack(alignment: .leading) {
-                    Image("share")
-                        .resizable()
-                        .scaledToFit()
-                    
-                    VStack(alignment: .leading) {
-                        Text("iOS")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.gray)
-                        
-                        Text("New Share API")
-                            .font(.system(size: 35, design: .rounded))
-                            .fontWeight(.heavy)
-                        
-                        Text("iSwift Bootcamp".uppercased())
-                            .font(.system(size:15))
-                            .foregroundColor(.gray)
-                        
-                        HStack {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }
-                        .padding(.vertical)
-                        .foregroundColor(.yellow)
-                        
-                        Text("The new Transferable protocol makes your data available for the clipboard, drag and drop, and the Share Sheet, which can now be invoked directly using SwiftUI.")
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.gray)
-                        
-                    }
-                    .padding()
-                    
-                }
-                
-                .cornerRadius(20)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.gray)
-                        .opacity(0.1)
-                }
-                .transition(.scaleAndOffset)
+                card
             } else {
-                VStack(alignment: .leading) {
-                    Image("navigation")
-                        .resizable()
-                        .scaledToFit()
-                    
-                    VStack(alignment: .leading) {
-                        Text("SwiftUI")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.gray)
-                        
-                        Text("Navigation API")
-                            .font(.system(size: 35, design: .rounded))
-                            .fontWeight(.heavy)
-                        
-                        Text("iSwift Bootcamp".uppercased())
-                            .font(.system(size:15))
-                            .foregroundColor(.gray)
-                        
-                        HStack {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                        }
-                        .padding(.vertical)
-                        .foregroundColor(.yellow)
-                        
-                        Text("Leverage programmatic control over your app’s navigation behavior to set its launch state, manage transitions between size classes, respond to deep links, and more.")
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.gray)
-                        
-                    }
-                    .padding()
-                    
-                    
-                }
-                .cornerRadius(20)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.gray)
-                        .opacity(0.1)
-                    
-                }
-                .transition(.scaleAndOffset)
+                card
             }
             
             Spacer()
@@ -116,6 +31,7 @@ struct MainView: View {
         .padding()
         .onTapGesture {
             withAnimation(Animation.spring()){
+                currentIndex = (currentIndex + 1) % cardView.count
                 isShowing.toggle()
             }
         }
@@ -139,11 +55,54 @@ extension MainView {
         .font(.system(size: 50, design: .rounded))
         .fontWeight(.heavy)
     }
+} // VStack
+
+extension MainView {
+    private var card: some View {
+        VStack(alignment: .leading) {
+            Image(cardView[currentIndex].image)
+                .resizable()
+                .scaledToFit()
+            VStack(alignment: .leading) {
+                Text(cardView[currentIndex].category)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.gray)
+                Text(cardView[currentIndex].heading)
+                    .font(.system(size: 35, design: .rounded))
+                    .fontWeight(.heavy)
+                
+                Text(cardView[currentIndex].author.uppercased())
+                    .font(.system(size:15))
+                    .foregroundColor(.gray)
+                
+                HStack {
+                    ForEach(1...(cardView[currentIndex].rating), id: \.self) { item in
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    }
+                }
+                .padding(.vertical)
+                .foregroundColor(.yellow)
+                Text(cardView[currentIndex].excerpt)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.gray)
+            }
+            .padding()
+            
+        }// VStack
+        .transition(.scaleAndOffset)
+        .cornerRadius(20)
+        .overlay {
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(.gray)
+                .opacity(0.1)
+        }
+    }
 }
 
 extension AnyTransition {
-
     static var scaleAndOffset: AnyTransition {
-        AnyTransition.asymmetric(insertion: .scale(scale: 0, anchor: .bottomTrailing), removal: .offset(x: 1500, y: 900).combined(with: .scale).combined(with: .opacity))
+        AnyTransition.asymmetric(insertion: .scale(scale: 0, anchor: .bottomTrailing), removal: .offset(x: 500, y: 1000).combined(with: .scale).combined(with: .opacity))
         }
 }
